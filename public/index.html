@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Check - Philippine Trends Monitor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h1>Vibe Check</h1>
+                </div>
+                <p class="tagline">Real-time Philippine trends across politics, gaming, crypto, stocks, disasters & news</p>
+                <div class="web3-status">
+                    <span class="status-indicator" id="web3Status">
+                        <i class="fas fa-circle"></i>
+                        Connecting to Base...
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-content">
+                <button class="nav-item active" data-category="all">
+                    <i class="fas fa-globe"></i>
+                    All Trends
+                </button>
+                <button class="nav-item" data-category="politics">
+                    <i class="fas fa-landmark"></i>
+                    Politics
+                </button>
+                <button class="nav-item" data-category="gaming">
+                    <i class="fas fa-gamepad"></i>
+                    Gaming
+                </button>
+                <button class="nav-item" data-category="crypto">
+                    <i class="fas fa-bitcoin-sign"></i>
+                    Crypto
+                </button>
+                <button class="nav-item" data-category="stocks">
+                    <i class="fas fa-chart-line"></i>
+                    Stocks
+                </button>
+                <button class="nav-item" data-category="disasters">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Disasters
+                </button>
+                <button class="nav-item" data-category="news">
+                    <i class="fas fa-newspaper"></i>
+                    News
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="content-wrapper">
+                <!-- Dashboard Overview -->
+                <section class="dashboard" id="dashboard">
+                    <div class="dashboard-header">
+                        <h2>Trending Now</h2>
+                        <div class="last-updated">
+                            <i class="fas fa-clock"></i>
+                            <span id="lastUpdated">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trends-grid" id="trendsGrid">
+                        <!-- Trends will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Category Details -->
+                <section class="category-details" id="categoryDetails" style="display: none;">
+                    <div class="category-header">
+                        <button class="back-btn" id="backBtn">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to All
+                        </button>
+                        <h2 id="categoryTitle">Category</h2>
+                    </div>
+                    
+                    <div class="category-content">
+                        <div class="sentiment-card">
+                            <h3>Sentiment Analysis</h3>
+                            <div class="sentiment-indicator" id="sentimentIndicator">
+                                <i class="fas fa-meh"></i>
+                                <span>Neutral</span>
+                            </div>
+                        </div>
+                        
+                        <div class="volume-card">
+                            <h3>Volume</h3>
+                            <div class="volume-display" id="volumeDisplay">
+                                <span class="volume-number">0</span>
+                                <span class="volume-label">mentions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="sources-card">
+                            <h3>Top Sources</h3>
+                            <div class="sources-list" id="sourcesList">
+                                <!-- Sources will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="keywords-card">
+                            <h3>Key Topics</h3>
+                            <div class="keywords-cloud" id="keywordsCloud">
+                                <!-- Keywords will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Vibe Check. Powered by Web3 & AI.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Analyzing trends...</p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
