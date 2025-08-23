@@ -224,27 +224,34 @@ export class TrendAnalyzer {
   }
 
   extractKeywords(texts, category) {
-    const allWords = [];
+    const wordFreq = {};
+    const philippineKeywords = this.philippineKeywords[category] || [];
     
     texts.forEach(text => {
       const words = this.tokenizer.tokenize(text.toLowerCase());
       if (words) {
         words.forEach(word => {
           if (word.length > 4 && !this.isCommonWord(word)) {
-            allWords.push(word);
+            wordFreq[word] = (wordFreq[word] || 0) + 1;
           }
         });
       }
     });
 
-    // Use TF-IDF to find important keywords
-    this.tfidf.addDocument(allWords.join(' '));
-    const terms = this.tfidf.listTerms(0);
-    
-    return terms
+    // Boost frequency for Philippine-specific keywords in this category
+    philippineKeywords.forEach(keyword => {
+      const keywordLower = keyword.toLowerCase();
+      if (wordFreq[keywordLower]) {
+        wordFreq[keywordLower] *= 3; // Boost category-specific keywords more
+      }
+    });
+
+    // Sort by frequency and return top keywords
+    return Object.entries(wordFreq)
+      .sort(([,a], [,b]) => b - a)
       .slice(0, 15)
-      .map(term => term.term)
-      .filter(term => term.length > 3);
+      .map(([word]) => word)
+      .filter(word => word.length > 3);
   }
 
   calculateTrendScore(frequency, totalTexts) {

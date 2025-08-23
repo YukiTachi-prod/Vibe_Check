@@ -14,15 +14,24 @@
         <header class="header">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    <h1>Vibe Check</h1>
+                    <i class="fas fa-gamepad"></i>
+                    <div class="logo-text">
+                        <h1>VIBE CHECK</h1>
+                        <p class="tagline">REAL-TIME PHILIPPINE TRENDS</p>
+                        <p class="subtitle">Politics • Gaming • Crypto • Stocks • Disasters • News</p>
+                    </div>
                 </div>
-                <p class="tagline">Real-time Philippine trends across politics, gaming, crypto, stocks, disasters & news</p>
-                <div class="web3-status">
-                    <span class="status-indicator" id="web3Status">
-                        <i class="fas fa-circle"></i>
-                        Connecting to Base...
-                    </span>
+                <div class="header-right">
+                    <button class="header-btn" id="headerBtn">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </button>
+                    <div class="web3-status">
+                        <span class="status-indicator" id="web3Status">
+                            <i class="fas fa-circle"></i>
+                            Connecting to Base...
+                        </span>
+                    </div>
                 </div>
             </div>
         </header>
@@ -67,9 +76,9 @@
                 <!-- Dashboard Overview -->
                 <section class="dashboard" id="dashboard">
                     <div class="dashboard-header">
-                        <h2>Trending Now</h2>
+                        <h2>🔥 TRENDING NOW 🔥</h2>
                         <div class="last-updated">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-sync-alt"></i>
                             <span id="lastUpdated">Loading...</span>
                         </div>
                     </div>
@@ -118,6 +127,40 @@
                             <div class="keywords-cloud" id="keywordsCloud">
                                 <!-- Keywords will be populated here -->
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Raw Scraped Posts Section -->
+                <section class="raw-posts-section" id="rawPostsSection">
+                    <div class="raw-posts-header">
+                        <h2>📋 RAW SCRAPED CONTENT</h2>
+                        <div class="raw-posts-controls">
+                            <button class="refresh-posts-btn" id="refreshPostsBtn">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh Posts
+                            </button>
+                            <button class="sample-data-btn" id="sampleDataBtn">
+                                <i class="fas fa-flask"></i>
+                                Show Sample Data
+                            </button>
+                            <select class="category-filter" id="categoryFilter">
+                                <option value="all">All Categories</option>
+                                <option value="politics">Politics</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="crypto">Crypto</option>
+                                <option value="stocks">Stocks</option>
+                                <option value="disasters">Disasters</option>
+                                <option value="news">News</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="raw-posts-container" id="rawPostsContainer">
+                        <!-- Raw posts will be populated here -->
+                        <div class="loading-posts">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading scraped posts...</p>
                         </div>
                     </div>
                 </section>
